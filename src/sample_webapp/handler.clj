@@ -7,12 +7,29 @@
             [cheshire.core :refer :all]))
 
 (defroutes app-routes
-  (GET "/api/book/:isbn" [isbn]
-       (if (= isbn "1")
+  (GET "/api/book/:id" [id]
+       (if (= id "1")
          {:status 200
-          :body (generate-string {:title "On enthusiastic programming"
+          :body (generate-string {:id 1
+                                  :title "On enthusiastic programming"
                                   :author "paci"
-                                  :isbn "1"})}
+                                  :isbn "3930238-39390293-3030233"})}
+         {:status 404
+          :body "not found beeee"}))
+  (GET "/api/author/:id" [id]
+       (if (= id "1")
+         {:status 200
+          :body (generate-string {:name "paci"
+                                  :id 1
+                                  :genre "technical"})}
+         {:status 404
+          :body "not found beeee"}))
+    (GET "/api/library/:id" [id]
+       (if (= id "1")
+         {:status 200
+          :body (generate-string {:name "On the corner library"
+                                  :id 1
+                                  :location "my small town"})}
          {:status 404
           :body "not found beeee"}))
   (route/not-found "Not Found"))
