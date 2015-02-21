@@ -1,21 +1,19 @@
 (ns sample-webapp.repo
   (:require [cheshire.core :refer :all]))
 
-(defn mock-book [id]
-  (when (= id "1")
-    (generate-string {:id 1
-                      :title "On enthusiastic programming"
+(defn mock-book [isdn]
+  (when (= isdn "1")
+    (generate-string {:title "On enthusiastic programming"
                       :author "paci"
-                      :isbn "3930238-39390293-3030233"})))
+                      :isdn "1"})))
 
-(defn mock-author [id]
-  (when (= id "1")
+(defn mock-author [name]
+  (when (= name "paci")
     (generate-string {:name "paci"
-                      :id 1
                       :genre "technical"})))
 
-(defn mock-library [id]
-  (when (= id "1")
+(defn mock-library [post-code]
+  (when (= post-code "se103zf")
     (generate-string {:name "On the corner library"
-                      :id 1
+                      :postcode "se103zf"
                       :location "my small town"})))
